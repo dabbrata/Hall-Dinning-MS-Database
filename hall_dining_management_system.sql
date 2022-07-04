@@ -9,18 +9,18 @@ DROP TABLE Cook;
 
 CREATE TABLE Student(
     Student_id Number(10) NOT NULL,
-    Attached_hall varchar(255),
+    Attached_hall varchar(30),
     Border_number Number(10) NOT NULL,
-    Student_name varchar(255),
+    Student_name varchar(30),
     Messing_fee Number(10),
     PRIMARY KEY (Student_id)
 );
 
 CREATE TABLE Hallprovost(
     Provost_id Number(10),
-    Provost_name varchar(255),
-    Designation varchar(255),
-    Hall_name varchar(255),
+    Provost_name varchar(30),
+    Designation varchar(30),
+    Hall_name varchar(30),
     Total_amount Number(10),
     Stud_id Number(10) NOT NULL, 
     FOREIGN KEY (Stud_id) REFERENCES Student(Student_id) ON DELETE CASCADE
@@ -29,20 +29,20 @@ CREATE TABLE Hallprovost(
 
 CREATE TABLE Cook(
     Cook_id Number(10) NOT NULL,
-    Cook_name varchar(255),
+    Cook_name varchar(30),
     PRIMARY KEY(Cook_id)
 );
 
 CREATE TABLE Foodprovider(
     Provider_id Number(10) NOT NULL,
-    Provider_name varchar(255),
+    Provider_name varchar(30),
     Std_id Number(10) NOT NULL,
     PRIMARY KEY(Provider_id)
 );
 
 CREATE TABLE Staff(
     Staff_id Number(10),
-    Staff_Name varchar(255),
+    Staff_Name varchar(30),
     Stud_border Number(10) NOT NULL,
     Prov_id Number(10) NOT NULL,
     FOREIGN KEY(Stud_border) REFERENCES Student(Student_id) ON DELETE CASCADE,
@@ -51,9 +51,9 @@ CREATE TABLE Staff(
 
 CREATE TABLE Diningmanager(
     Manager_id Number(10),
-    Hall_name varchar(255),
-    Manager_name varchar(255),
-    Facilities varchar(255),
+    Hall_name varchar(30),
+    Manager_name varchar(30),
+    Facilities varchar(30),
     Duration_months Number(11),
     Ck_id Number(10) NOT NULL,
     Pv_id Number(10) NOT NULL,
@@ -131,6 +131,41 @@ SELECT * FROM Diningmanager;
 SELECT * FROM Staff;
 SELECT * FROM Foodprovider;
 SELECT * FROM Cook;
+
+-- adding column by add operation......
+ALTER TABLE Cook ADD temp_add_column varchar(30);
+DESC Cook;
+SELECT * FROM Cook;
+
+-- droping column by drop operation.....
+ALTER TABLE Cook DROP column temp_add_column;
+DESC Cook;
+SELECT * FROM Cook;
+
+-- modifiyng column data type from varchar(30) to varchar(60)...........
+ALTER TABLE Cook modify Cook_name varchar(60);
+DESC Cook;
+SELECT * FROM Cook;
+
+-- rename column by rename operation.........
+
+ALTER TABLE Cook rename column Cook_name to Cook_username;
+DESC Cook;
+SELECT * FROM Cook;
+
+ALTER TABLE Cook rename column Cook_username to Cook_name;
+DESC Cook;
+SELECT * FROM Cook;
+
+-- update operation by updating a value.........
+
+
+
+
+
+
+
+
 
 
 
