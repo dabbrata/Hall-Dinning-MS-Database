@@ -101,7 +101,7 @@ INSERT INTO Staff(Staff_id,Staff_Name,Stud_border,Prov_id)VALUES(1001,'Kamal',18
 INSERT INTO Staff(Staff_id,Staff_Name,Stud_border,Prov_id)VALUES(1001,'Kamal',1807114,1113);
 INSERT INTO Staff(Staff_id,Staff_Name,Stud_border,Prov_id)VALUES(1001,'Kamal',1807109,1112);
 
-INSERT INTO Cook(Cook_id,Cook_name)VALUES(2221,'josim');
+INSERT INTO Cook(Cook_id,Cook_name)VALUES(2221,'Josim');
 INSERT INTO Cook(Cook_id,Cook_name)VALUES(2222,'Amena');
 
 INSERT INTO Diningmanager(Manager_id,Hall_name,Manager_name,Facilities,Duration_months,Ck_id,Pv_id)VALUES(5050,'BSMRH','Tayef','Extra income',6,2221,1111);
@@ -158,6 +158,23 @@ DESC Cook;
 SELECT * FROM Cook;
 
 -- update operation by updating a value.........
+UPDATE Cook SET Cook_name = 'Atiqur Rahman' WHERE Cook_id = 2222;
+SELECT * FROM Cook;
+
+UPDATE Cook SET Cook_name = 'Amena' WHERE Cook_id = 2222;
+SELECT * FROM Cook;
+
+-- delete a row from Cook table.....
+
+DELETE FROM Cook WHERE Cook_id = 2221;
+SELECT * FROM Cook;
+
+INSERT INTO Cook (Cook_id,Cook_name)VALUES(2221,'Josim');
+SELECT * FROM Cook;
+
+-- Some calculation.....
+
+
 
 
 
