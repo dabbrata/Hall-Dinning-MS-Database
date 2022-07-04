@@ -187,6 +187,30 @@ SELECT Student_name,Attached_hall FROM Student WHERE Student_id BETWEEN 1807108 
 SELECT Student_name,Attached_hall FROM Student WHERE Student_id NOT BETWEEN 1807108 AND  1807113;
 
 -- find value of specific range by comparing and operator
+SELECT Student_name,Attached_hall,Border_number FROM Student WHERE Student_id >= 1807108 AND Student_id <= 1807113;
+SELECT Student_name,Attached_hall,Border_number FROM Student WHERE Student_id >= 1807108 OR Student_id <= 1807113; -- compound condition search condition
+
+-- set membership using IN keyword
+SELECT Student_name,Attached_hall,Border_number FROM Student WHERE Student_id IN(1807105,1807110,1807113);
+SELECT Student_name,Attached_hall,Border_number FROM Student WHERE Student_id NOT IN(1807105,1807110,1807113);
+
+-- ORDERING BY column values
+SELECT Student_name,Attached_hall,Border_number FROM Student ORDER BY Student_id;
+SELECT Student_name,Attached_hall,Border_number FROM Student ORDER BY Student_id DESC;
+
+-- ORDER BY COLUMN VALUES(WITH MULTIPLE COLUMNS)
+-- SELECT Student_name,Attached_hall,Border_number FROM Student ORDER BY Student_id,Attached_hall;
+-- SELECT Student_name,Attached_hall,Border_number FROM Student ORDER BY Student_id,Attached_hall DESC;
+
+
+
+
+
+
+
+
+
+
 
 
 
