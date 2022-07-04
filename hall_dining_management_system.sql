@@ -172,7 +172,21 @@ SELECT * FROM Cook;
 INSERT INTO Cook (Cook_id,Cook_name)VALUES(2221,'Josim');
 SELECT * FROM Cook;
 
--- Some calculation.....
+
+
+-- Some calculation over Hallprovost table.....
+
+--apply divide operation...
+SELECT (Total_amount/2) AS Tot_amount_divide FROM Hallprovost;
+
+--some condition to find specific column with row info from food provider table...
+SELECT Provider_name FROM Foodprovider WHERE Provider_id = 1112;
+
+--search in a specific range over Student table
+SELECT Student_name,Attached_hall FROM Student WHERE Student_id BETWEEN 1807108 AND  1807113;
+SELECT Student_name,Attached_hall FROM Student WHERE Student_id NOT BETWEEN 1807108 AND  1807113;
+
+-- find value of specific range by comparing and operator
 
 
 
