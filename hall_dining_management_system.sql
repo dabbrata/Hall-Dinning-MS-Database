@@ -1,3 +1,10 @@
+-- set console display for proper view....
+
+set pagesize 500;
+set linesize 1000;
+
+-- Lab 01............................................................................
+
 DROP TABLE Providestudent;
 DROP TABLE Hallprovost;
 DROP TABLE Staff;
@@ -70,23 +77,23 @@ CREATE TABLE Providestudent(
 
 ----Here all the inserted values......
 
-INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807109,'BSMRH',1807109,'Dabbrata',2000);
-INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807107,'BSMRH',1807107,'Emdadul',2000);
+INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807109,'BSMRH',1807109,'Dabbrata',600);
+INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807107,'BSMRH',1807107,'Emdadul',1000);
 INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807106,'BSMRH',1807106,'Udoy',2000);
-INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807105,'BSMRH',1807105,'Kowshik',2000);
-INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807110,'BSMRH',1807110,'Jubayer',2000);
+INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807105,'BSMRH',1807105,'Kowshik',3000);
+INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807110,'BSMRH',1807110,'Jubayer',4000);
 INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807111,'BSMRH',1807111,'Amit',2000);
-INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807112,'BSMRH',1807112,'Mobarak',2000);
-INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807114,'BSMRH',1807114,'Mishu',2000);
+INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807112,'BSMRH',1807112,'Mobarak',2500);
+INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807114,'BSMRH',1807114,'Mishu',900);
 
-INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',12000,1807105);
-INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',12000,1807107);
-INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',12000,1807109);
-INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',12000,1807110);
-INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',12000,1807111);
-INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',12000,1807106);
-INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',12000,1807112);
-INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',12000,1807114);
+INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',16000,1807105);
+INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',16000,1807107);
+INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',16000,1807109);
+INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',16000,1807110);
+INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',16000,1807111);
+INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',16000,1807106);
+INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',16000,1807112);
+INSERT INTO Hallprovost(Provost_id,Provost_name,Designation,Hall_name,Total_amount,Stud_id)VALUES(1801,'Arif','Assist.Prof','BSMRH',16000,1807114);
 
 INSERT INTO Foodprovider(Provider_id,Provider_name,Std_id)VALUES(1111,'jamaluddin',1807109);
 INSERT INTO Foodprovider(Provider_id,Provider_name,Std_id)VALUES(1112,'kamaluddin',1807107);
@@ -110,11 +117,6 @@ INSERT INTO Diningmanager(Manager_id,Hall_name,Manager_name,Facilities,Duration_
 INSERT INTO Diningmanager(Manager_id,Hall_name,Manager_name,Facilities,Duration_months,Ck_id,Pv_id)VALUES(5050,'BSMRH','Tayef','Room facility',12,2222,1113);
 
 
--- set console display for proper view....
-
-set pagesize 500;
-set linesize 1000;
-
 -- show all tables.............
 DESC Student;
 DESC Hallprovost;
@@ -122,6 +124,8 @@ DESC Diningmanager;
 DESC Staff;
 DESC Foodprovider;
 DESC Cook;
+
+-- lab 02 and  lab 03...................................................................
 
 -- show all table informations......
 
@@ -199,8 +203,51 @@ SELECT Student_name,Attached_hall,Border_number FROM Student ORDER BY Student_id
 SELECT Student_name,Attached_hall,Border_number FROM Student ORDER BY Student_id DESC;
 
 -- ORDER BY COLUMN VALUES(WITH MULTIPLE COLUMNS)
--- SELECT Student_name,Attached_hall,Border_number FROM Student ORDER BY Student_id,Attached_hall;
--- SELECT Student_name,Attached_hall,Border_number FROM Student ORDER BY Student_id,Attached_hall DESC;
+SELECT Student_name, Border_number FROM Student ORDER BY Student_name,Student_id;
+SELECT Student_name, Border_number FROM Student ORDER BY Student_name,Student_id DESC;
+
+-- use and find distinct values from column
+SELECT DISTINCT(Prov_id) FROM Staff;
+
+
+
+-- Lab 04...........................................................................
+
+-- pattern matching like searching where first char is M and others may have any
+SELECT Student_id,Student_name FROM Student WHERE Student_name LIKE 'M%';
+-- searching where exit 'a' char in the word from student_name
+SELECT Student_id,Student_name FROM Student WHERE Student_name LIKE '%a%';
+
+-- use of aggregate functions
+SELECT MAX(Messing_fee) FROM Student;
+SELECT MIN(Messing_fee) FROM Student;
+SELECT SUM(Messing_fee) FROM Student;
+SELECT COUNT(Messing_fee) FROM Student;
+SELECT COUNT(*)FROM Student;
+SELECT COUNT(DISTINCT(Messing_fee)) FROM Student;
+SELECT AVG(Messing_fee) FROM Student;
+SELECT AVG(NVL(Messing_fee,0)) FROM Student; --if null exist,then it will be treated as 0
+
+-- GROUP BY clause
+SELECT COUNT(Student_id),Messing_fee FROM Student GROUP BY Messing_fee;
+SELECT COUNT(Student_id),Messing_fee FROM Student WHERE Border_number>1807109 GROUP BY Messing_fee;
+
+-- HAVING clause
+SELECT COUNT(Student_id),Messing_fee FROM Student GROUP BY Messing_fee HAVING Messing_fee > 1500;
+SELECT COUNT(Student_id),Messing_fee FROM Student GROUP BY Messing_fee HAVING COUNT(Messing_fee) > 1;
+
+
+-- lab 05...............................................................................................
+
+
+
+
+
+
+
+
+
+
 
 
 
