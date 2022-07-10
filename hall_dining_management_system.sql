@@ -239,6 +239,51 @@ SELECT COUNT(Student_id),Messing_fee FROM Student GROUP BY Messing_fee HAVING CO
 
 -- lab 05...............................................................................................
 
+-- use of IN
+SELECT Student_id,Messing_fee FROM Student WHERE Student_name IN('Dabbrata','Emdadul','Udoy');
+-- nested query
+SELECT Student_id,Messing_fee FROM Student WHERE Student_name IN(SELECT Student_name FROM Student);
+
+
+-- SET operations..............
+
+-- union all operation
+SELECT Student_id,Student_name FROM Student WHERE Student_id > 1807107 AND Student_id < 1807113
+UNION ALL
+SELECT Provider_id,Provider_name FROM Foodprovider WHERE Provider_id >= 1111 AND Provider_id < 1113;
+-- union operation
+SELECT Student_id,Student_name FROM Student WHERE Student_id > 1807107 AND Student_id < 1807113
+UNION
+SELECT Provider_id,Provider_name FROM Foodprovider WHERE Provider_id >= 1111 AND Provider_id < 1113;
+
+-- Intersect operation
+SELECT Student_id FROM Student WHERE Student_id > 1807107 AND Student_id < 1807113
+INTERSECT
+SELECT Stud_border FROM Staff WHERE Stud_border >= 1807105 AND Stud_border < 1807110;
+
+-- Minus operation
+SELECT Student_id FROM Student WHERE Student_id >= 1807105 AND Student_id < 1807113
+MINUS
+SELECT Stud_border FROM Staff WHERE Stud_border >= 1807105 AND Stud_border < 1807110;
+
+
+
+
+-- lab 06.................................................................................................
+-- join multiple tables
+SELECT s.Student_id,s.Student_name,s.Messing_fee FROM Student s
+JOIN
+Foodprovider f ON s.Student_id = f.Std_id;
+
+-- join (condition using multiple columns)
+SELECT s.Student_id,s.Student_name,s.Messing_fee FROM Student s
+JOIN
+Foodprovider f ON s.Student_id = f.Std_id AND s.Student_name = f.Provider_name;
+
+-- natural join
+SELECT Cook_id,Cook_name FROM Cook NATURAL JOIN Diningmanager;
+
+
 
 
 
