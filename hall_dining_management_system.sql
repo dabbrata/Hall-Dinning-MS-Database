@@ -282,6 +282,30 @@ Foodprovider f ON s.Student_id = f.Std_id AND s.Student_name = f.Provider_name;
 
 -- natural join
 SELECT Cook_id,Cook_name FROM Cook NATURAL JOIN Diningmanager;
+-- cross join
+SELECT st.Staff_id,st.Stud_border,st.Staff_Name,d.Duration_months FROM Staff st CROSS JOIN Diningmanager d;
+-- inner join
+SELECT p.Provider_id,p.Provider_name,d.Duration_months FROM Foodprovider p INNER JOIN Diningmanager d ON p.Provider_id = d.Pv_id;
+
+-- outer join
+-- left outer join
+SELECT s.Student_id,s.Student_name,s.Messing_fee,f.Provider_name FROM Student s LEFT OUTER JOIN Foodprovider f ON s.Student_id = f.Std_id;
+-- rigth outer join
+SELECT s.Student_id,s.Student_name,s.Messing_fee,f.Provider_name FROM Student s RIGHT OUTER JOIN Foodprovider f ON s.Student_id = f.Std_id;
+-- full outer join
+SELECT s.Student_id,s.Student_name,s.Messing_fee,f.Provider_name FROM Student s FULL OUTER JOIN Foodprovider f ON s.Student_id = f.Std_id;
+
+-- self join
+SELECT s.Student_id,s.Student_name FROM Student s JOIN Student st ON s.Student_id < st.Student_id;
+-- find max using self join
+SELECT s.Student_id,s.Student_name FROM Student s MINUS
+SELECT s.Student_id,s.Student_name FROM Student s JOIN Student st ON s.Student_id < st.Student_id;
+
+
+
+
+-- lab 07,08,09..........................................................................................................
+
 
 
 
