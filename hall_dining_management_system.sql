@@ -304,8 +304,68 @@ SELECT s.Student_id,s.Student_name FROM Student s JOIN Student st ON s.Student_i
 
 
 
--- lab 07,08,09..........................................................................................................
+-- lab 07..........................................................................................................
+-- PLSql started from here
 
+-- find maximum amount of fee from student table of the students
+SET SERVEROUTPUT ON
+DECLARE
+    max_student_fee Student.Messing_fee%type;
+BEGIN
+    SELECT Max(Messing_fee) INTO max_student_fee FROM Student;
+    DBMS_OUTPUT.PUT_LINE('The maximum fee is : '||max_student_fee);
+END;
+/
+-- add two table(foodprovider with staff) and find specific one and initialize the variable with values
+SET SERVEROUTPUT ON
+DECLARE
+  P_name Foodprovider.Provider_name%type;
+  S_id  Foodprovider.Std_id%type := 1807109;
+BEGIN
+  SELECT Provider_name INTO P_name
+  FROM Foodprovider, Staff
+  WHERE Foodprovider.Std_id = Staff.Stud_border AND
+  Std_id = S_id;  
+  DBMS_OUTPUT.PUT_LINE('Name of foodprovider: ' || P_name);
+END;
+/
+-- extra condiiton and calculation applied over query from student table
+
+SET SERVEROUTPUT ON
+DECLARE
+    amount_fee  Student.Messing_fee%type;
+    s_name  VARCHAR2(100);
+    discount_fee Student.Messing_fee%type;
+	
+BEGIN
+    s_name := 'Kowshik';
+ 
+    SELECT Messing_fee INTO amount_fee
+    FROM Student
+    WHERE Student_name like s_name;
+ 
+    IF amount_fee < 1500  THEN
+                discount_fee := amount_fee;
+    ELSIF amount_fee >= 1500 and amount_fee <2500  THEN
+               discount_fee :=  amount_fee - (amount_fee*0.25);
+    ELSIF amount_fee >= 2500 and amount_fee <= 3500 THEN
+       discount_fee :=  amount_fee - (amount_fee*0.35);
+   ELSE
+	discount_fee :=  amount_fee - (amount_fee*0.45); 
+    END IF;
+ 
+DBMS_OUTPUT.PUT_LINE (s_name || ' = Original Fee: '||amount_fee||', Disounted Fee: '|| ROUND(discount_fee,2));
+EXCEPTION
+         WHEN others THEN
+	      DBMS_OUTPUT.PUT_LINE (SQLERRM);
+END;
+/
+SHOW errors
+
+
+
+
+-- lab 08..........................................................................................................
 
 
 
