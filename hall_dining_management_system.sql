@@ -529,11 +529,6 @@ WHERE Student_id = 1807109;
 SELECT LAST_DAY ('13-JUL-22')
 FROM Student;
 
--- applying condition with respect to time
-SELECT Student_id,Student_name,Messing_fee FROM Student 
-WHERE (13-6-22) - (12-6-22) != 0;
-
-
 
 
 
