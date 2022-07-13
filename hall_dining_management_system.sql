@@ -367,6 +367,111 @@ SHOW errors
 
 -- lab 08..........................................................................................................
 
+-- For loop to find first 5 students from Student table
+SET SERVEROUTPUT ON
+DECLARE
+    CURSOR student_cur IS SELECT Messing_fee,Student_name FROM Student;
+    student_record student_cur%ROWTYPE;
+BEGIN
+    OPEN student_cur;
+         LOOP
+            FETCH student_cur INTO student_record;
+            EXIT WHEN student_cur%ROWCOUNT > 5;
+         DBMS_OUTPUT.PUT_LINE(student_record.Student_name||' : '||student_record.Messing_fee);
+         END LOOP;
+         CLOSE student_cur;
+END;
+/             
+
+-- For loop to find first students whose messing fee is over 1500 from Student table
+
+SET SERVEROUTPUT ON
+DECLARE
+    CURSOR student_cur IS SELECT Messing_fee,Student_name FROM Student;
+    student_record student_cur%ROWTYPE;
+    tot_student Number(10);
+BEGIN
+    SELECT COUNT(*) INTO tot_student FROM Student;
+    OPEN student_cur;
+         LOOP
+            FETCH student_cur INTO student_record;
+            EXIT WHEN student_cur%ROWCOUNT >= tot_student;
+            IF student_record.Messing_fee > 1500 THEN
+                DBMS_OUTPUT.PUT_LINE(student_record.Student_name||' : '||student_record.Messing_fee);
+            END IF;    
+         END LOOP;
+         CLOSE student_cur;
+END;
+/ 
+
+-- PL/SQL procedure to find foodprovider name with the help of corresponding student
+
+SET SERVEROUTPUT ON
+CREATE OR REPLACE PROCEDURE getName IS
+    p_name Foodprovider.Provider_name%type;
+    s_id Foodprovider.Std_id%type;
+BEGIN
+    s_id := 1807111;
+    SELECT Provider_name INTO p_name FROM Foodprovider
+    WHERE Foodprovider.Std_id = s_id;
+    DBMS_OUTPUT.PUT_LINE('The foodprovider named "'||p_name||'" will provide the food to the student(ROLL:'||s_id||')');
+END;
+/    
+
+BEGIN
+    getName;
+END;
+/
+
+-- PL/SQL FUNCTION with return type to find average ,total messing fee and the discount of messing for specific amount...
+
+-- function for average messing fee
+SET SERVEROUTPUT ON
+CREATE OR REPLACE FUNCTION avgFee RETURN Number IS
+    avg_fee Student.Messing_fee%type;
+BEGIN
+    SELECT Avg(Messing_fee) INTO avg_fee FROM Student;
+    RETURN avg_fee;
+END;
+/
+
+-- funtion for total messing fee
+CREATE OR REPLACE FUNCTION totalFee RETURN NUMBER IS
+    total_fee NUMBER(10);
+BEGIN
+    SELECT Sum(Messing_fee) INTO total_fee FROM Student;
+    RETURN total_fee;
+END;
+/
+
+-- funtion for messing fee after discount
+CREATE OR REPLACE FUNCTION discountFee
+(amount_fee IN Student.Messing_fee%type,
+discount_percent IN Student.Messing_fee%type)
+RETURN NUMBER IS
+
+BEGIN
+    RETURN (NVL(amount_fee,0) - (NVL(amount_fee,0)*discount_percent*0.01));
+END discountFee;
+/    
+
+-- Now call all the above functions...
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('The AVERAGE messing fee of the students :' || avgFee);
+    DBMS_OUTPUT.PUT_LINE('The TOTAL messing fee of the students :' || totalFee);
+    DBMS_OUTPUT.PUT_LINE('The messing fee of 2500 after DISCOUNT :'|| discountFee(2500,15));
+END;
+/    
+
+
+
+
+-- lab 09.........................................................................................................
+
+
+    
+    
+
 
 
 
