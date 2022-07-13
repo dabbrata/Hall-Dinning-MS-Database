@@ -76,6 +76,18 @@ CREATE TABLE Providestudent(
 );
 
 ----Here all the inserted values......
+-- don't allow duplicate value and the fee below 500 and above 5000 insertion into student table
+CREATE OR REPLACE TRIGGER checkFee BEFORE INSERT OR UPDATE ON Student
+FOR EACH ROW
+DECLARE
+    min_fee constant number(6,2) := 500.0;
+    max_fee constant number(6,2) := 5000.0;
+BEGIN
+    IF :NEW.Messing_fee > max_fee OR  :NEW.Messing_fee < min_fee THEN
+    RAISE_APPLICATION_ERROR(-2000,'New salary is too small or large');
+    END IF;
+END;
+/ 
 
 INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807109,'BSMRH',1807109,'Dabbrata',600);
 INSERT INTO Student(Student_id,Attached_hall,Border_number,Student_name,Messing_fee)VALUES(1807107,'BSMRH',1807107,'Emdadul',1000);
@@ -467,6 +479,75 @@ END;
 
 
 -- lab 09.........................................................................................................
+-- triggered for applying condition to get discount among certain fee
+DROP TABLE DiscountRate;
+CREATE TABLE DiscountRate(
+    student_id Number(10) PRIMARY KEY,
+    student_name varchar(50),
+    fee Number(10) NOT NULL,
+    discount_rate Number(10)
+);
+CREATE OR REPLACE TRIGGER discountTrigger
+BEFORE UPDATE OR INSERT ON DiscountRate
+FOR EACH ROW
+BEGIN
+    IF :NEW.fee > 4000 THEN :NEW.discount_rate := 40;
+    ELSIF :NEW.fee > 3000 THEN :NEW.discount_rate := 30;
+    ELSIF :NEW.fee > 2000 THEN :NEW.discount_rate := 20;
+    ELSIF :NEW.fee > 1000 THEN :NEW.discount_rate := 10;
+    ELSIF :NEW.fee < 1000 THEN :NEW.discount_rate := 5;
+    END IF;
+END discountTrigger;
+/
+-- now for the specific amount of fee ,it will automatically insert the discount rate acoording to that fee.
+INSERT INTO DiscountRate(student_id,student_name,fee,discount_rate)VALUES(1,'dabbrata',2500,NULL);
+SELECT * FROM DiscountRate;
+
+
+-- some special functions
+-- rollback
+DELETE FROM Cook WHERE Cook_id = 2222;
+SELECT * FROM Cook;
+ROLLBACK;
+SELECT * FROM Cook;
+--  date
+SELECT sysdate FROM dual;
+SELECT current_date FROM dual;
+SELECT systimestamp FROM dual;
+
+-- two months extension in forward from current date
+SELECT ADD_MONTHS ('13-JUL-22',2) AS Two_months_Extension
+FROM Student
+WHERE Student_id = 1807109;
+
+-- two months extension in backward from current date
+SELECT ADD_MONTHS ('13-JUL-22', -6) AS Six_months_Extension
+FROM Student
+WHERE Student_id = 1807109;
+
+-- last day from the date of the months in which the student paid their fee
+SELECT LAST_DAY ('13-JUL-22')
+FROM Student;
+
+-- applying condition with respect to time
+SELECT Student_id,Student_name,Messing_fee FROM Student 
+WHERE (13-6-22) - (12-6-22) != 0;
+
+
+
+
+
+-- .............................................. COMPLETED....................................................
+
+
+
+
+
+
+
+
+  
+
 
 
     
