@@ -503,6 +503,31 @@ END discountTrigger;
 INSERT INTO DiscountRate(student_id,student_name,fee,discount_rate)VALUES(1,'dabbrata',2500,NULL);
 SELECT * FROM DiscountRate;
 
+-- Transaction management for messign fee on extra table
+DROP TABLE Trans;
+CREATE TABLE Trans(
+    studentId Number(10) PRIMARY KEY,
+    amount_fee NUmber(10) NOT NULL
+);
+
+INSERT INTO Trans(studentId,amount_fee)VALUES(1807095,1200);
+INSERT INTO Trans(studentId,amount_fee)VALUES(1807096,800);
+COMMIT;
+INSERT INTO Trans(studentId,amount_fee)VALUES(1807097,1600);
+SAVEPOINT save1;
+INSERT INTO Trans(studentId,amount_fee)VALUES(1807098,1000);
+INSERT INTO Trans(studentId,amount_fee)VALUES(1807099,1100);
+SAVEPOINT save2;
+INSERT INTO Trans(studentId,amount_fee)VALUES(1807100,1400);
+
+SELECT * FROM Trans;
+
+ROLLBACK to save2;
+SELECT * FROM Trans;
+
+ROLLBACK to save1;
+SELECT * FROM Trans;
+
 
 -- some special functions
 -- rollback
