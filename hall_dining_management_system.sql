@@ -140,13 +140,40 @@ DESC Cook;
 -- lab 02 and  lab 03...................................................................
 
 -- show all table informations......
-
 SELECT * FROM Student;
 SELECT * FROM Hallprovost;
 SELECT * FROM Diningmanager;
 SELECT * FROM Staff;
 SELECT * FROM Foodprovider;
 SELECT * FROM Cook;
+
+
+-- create view over all the tables with some specific values
+CREATE OR REPLACE VIEW newStudent AS
+SELECT * FROM Student WHERE student_id BETWEEN 1807109 AND 1807112;
+SELECT * FROM newStudent;  
+
+CREATE OR REPLACE VIEW newHallprovost AS
+SELECT * FROM Hallprovost WHERE stud_id =1807109;
+SELECT * FROM newHallprovost;
+
+CREATE OR REPLACE VIEW newFoodprovider AS
+SELECT * FROM Foodprovider WHERE Provider_id IN (1111,1113);
+SELECT * FROM newFoodprovider;
+
+CREATE OR REPLACE VIEW newStaff AS
+SELECT * FROM Staff WHERE stud_border like 1807109;
+SELECT * FROM newStaff;
+
+CREATE OR REPLACE VIEW newCook AS
+SELECT * FROM Cook WHERE Cook_id = 2221;
+SELECT * FROM newCook;
+
+CREATE OR REPLACE VIEW newDiningmanager AS
+SELECT * FROM Diningmanager WHERE Ck_id = 2222;
+SELECT * FROM newDiningmanager;
+
+
 
 -- adding column by add operation......
 ALTER TABLE Cook ADD temp_add_column varchar(30);
@@ -480,7 +507,7 @@ END;
 
 -- lab 09.........................................................................................................
 -- triggered for applying condition to get discount among certain fee
-DROP TABLE DiscountRate;
+
 CREATE TABLE DiscountRate(
     student_id Number(10) PRIMARY KEY,
     student_name varchar(50),
@@ -503,8 +530,10 @@ END discountTrigger;
 INSERT INTO DiscountRate(student_id,student_name,fee,discount_rate)VALUES(1,'dabbrata',2500,NULL);
 SELECT * FROM DiscountRate;
 
+DROP TABLE DiscountRate;
+
 -- Transaction management for messign fee on extra table
-DROP TABLE Trans;
+
 CREATE TABLE Trans(
     studentId Number(10) PRIMARY KEY,
     amount_fee NUmber(10) NOT NULL
@@ -528,6 +557,7 @@ SELECT * FROM Trans;
 ROLLBACK to save1;
 SELECT * FROM Trans;
 
+DROP TABLE Trans;
 
 -- some special functions
 -- rollback
