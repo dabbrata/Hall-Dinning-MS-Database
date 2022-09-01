@@ -4,8 +4,7 @@ set pagesize 500;
 set linesize 1000;
 
 -- Lab 01............................................................................
-
-DROP TABLE Providestudent;
+DROP TABLE PROVIDESTUDENT;
 DROP TABLE Hallprovost;
 DROP TABLE Staff;
 DROP TABLE Student;
@@ -74,6 +73,7 @@ CREATE TABLE Providestudent(
     FOREIGN KEY(P_id) REFERENCES Foodprovider(Provider_id),
     FOREIGN key(S_id) REFERENCES Student(Student_id)
 );
+
 
 ----Here all the inserted values......
 -- don't allow duplicate value and the fee below 500 and above 5000 insertion into student table
@@ -384,13 +384,13 @@ BEGIN
     WHERE Student_name like s_name;
  
     IF amount_fee < 1500  THEN
-                discount_fee := amount_fee;
+               discount_fee := amount_fee;
     ELSIF amount_fee >= 1500 and amount_fee <2500  THEN
                discount_fee :=  amount_fee - (amount_fee*0.25);
     ELSIF amount_fee >= 2500 and amount_fee <= 3500 THEN
-       discount_fee :=  amount_fee - (amount_fee*0.35);
-   ELSE
-	discount_fee :=  amount_fee - (amount_fee*0.45); 
+               discount_fee :=  amount_fee - (amount_fee*0.35);
+    ELSE
+	           discount_fee :=  amount_fee - (amount_fee*0.45); 
     END IF;
  
 DBMS_OUTPUT.PUT_LINE (s_name || ' = Original Fee: '||amount_fee||', Disounted Fee: '|| ROUND(discount_fee,2));
